@@ -12,6 +12,7 @@ const process = {
  * @param events - The event you want to cover
  * @param timer - How long until it should trigger (ms)
  */
+
 export const debugData = (events, timer = 1000) => {
     if (process.env.NODE_ENV === "development" && isEnvBrowser()) {
         for (const event of events) {
