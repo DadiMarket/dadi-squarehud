@@ -21,7 +21,7 @@ const SquareRange = memo(({ voicerange }) => {
                 <div className='mt-[-8px] ml-4'>
                     <SmallSquare />
                 </div>
-                <div className='mt-[-8px] ml-3'>
+                <div className='mt-[-8px] ml-4'>
                     <SmallSquare />
                 </div>
             </>
@@ -32,10 +32,10 @@ const SquareRange = memo(({ voicerange }) => {
                 <div className='mt-[-8px] ml-4'>
                     <SmallSquare />
                 </div>
-                <div className='mt-[-8px] ml-3'>
+                <div className='mt-[-8px] ml-4'>
                     <SmallSquare />
                 </div>
-                <div className='mt-[-8px] ml-2'>
+                <div className='mt-[-8px] ml-4'>
                     <SmallSquare />
                 </div>
             </>

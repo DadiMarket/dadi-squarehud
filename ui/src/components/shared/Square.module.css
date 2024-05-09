@@ -1,9 +1,9 @@
 :root {
-    --primary-color: hsla(0, 100%, 40%, 0.64);
-    --secondary-color: hsla(0, 100%, 50%, 0.8);
+    --primary-color: hsla(0, 0%, 14%, 0.64);
+    --secondary-color: hsla(0, 0%, 0%, 0.8);
     --tertiary-color: hsla(0, 100%, 14%, 0.55);
-    --quaternary-color: hsla(0, 100%, 50%, 0.41);
-    --drop-shadow-color: hsla(0, 100%, 50%, 0.302);
+    --quaternary-color: hsla(0, 7%, 20%, 0.41);
+    --drop-shadow-color: hsla(0, 0%, 2%, 0.302);
 }
 
 .container {
@@ -36,7 +36,6 @@
         );
     filter: drop-shadow(0px 3px 1px var(--drop-shadow-color)) drop-shadow(0px 4px 2.5px rgba(0, 0, 0, 0.3));
     border-radius: 0 4px 0 4px;
-    transform: skewX(-18deg);
 }
 
 .icon {

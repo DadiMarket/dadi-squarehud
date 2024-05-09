@@ -16,8 +16,8 @@ debugData([
         data: {
             // Hud Status //
             showHud: true,
-            carHud: true,
-            customMenu: true,
+            carHud: false,
+            customMenu: false,
             // Car Status //
             seatBelt: false,
             speedValue: 0,
@@ -26,11 +26,11 @@ debugData([
             rpm: 0.5,
             // Player Status //
             id: 222,
-            radio: false,
+            radio: true,
             talking: false,
             voicerange: 'Shouting',
             health: 50,
-            armor: 0,
+            armor: 10,
             hunger: 100,
         }
     },

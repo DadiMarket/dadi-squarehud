@@ -9,7 +9,6 @@ const initialState = {
             showHud: true,
             carHud: false,
             customMenu: null,
-            hudColor: { h: 0, s: 100, l: 50, a: 0.8 },
         },
         player: { // Estado del jugador
             health: 50,
