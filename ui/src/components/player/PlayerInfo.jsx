@@ -4,44 +4,6 @@ import { Context } from '../../services/Memory';
 import Square from "../shared/Square";
 import MicroIcon from "../icons/Microphone";
 import RadioIcon from "../icons/Radio";
-import SmallSquare from '../shared/SmallSquare';
-
-const SquareRange = memo(({ voicerange }) => {
-    if (voicerange === 'Whisper') {
-        return (
-            <>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-            </>
-        );
-    } else if (voicerange === 'Normal') {
-        return (
-            <>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-            </>
-        );
-    } else if (voicerange === 'Shouting') {
-        return (
-            <>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-                <div className='mt-[-8px] ml-4'>
-                    <SmallSquare />
-                </div>
-            </>
-        );
-    }
-});
 
 function PlayerInfo() {
     const { state } = useContext(Context);
@@ -68,34 +30,39 @@ function PlayerInfo() {
 
     return (
         <>
-            <div className='flex mr-20 justify-end align-bottom my-14'>
-                <animated.div style={idSpring}>
-                    <Square>
-                        <div className='flex items-center justify-center'>
-                            <span className="text-white font-bold font-inter text-m">{playerInfo.id}</span>
-                        </div>
-                    </Square>
-                </animated.div>
-
-                <animated.div className='ml-[-20px]' style={radioSpring}>
-                    <Square>
-                        <div>
-                            <RadioIcon />
-                        </div>
-                    </Square>
-                </animated.div>
-
-                <div className='ml-[-20px]'>
-                    <Square>
-                        <div>
-                            <MicroIcon />
-                            <div className='flex flex-col gap-4 ml-8 mt-[-16px]'>
-                                <SquareRange voicerange={playerInfo.voicerange} />
+            <div className='flex flex-col gap-1'>
+                <div className='w-full flex justify-end items-start px-[8rem] mt-4'>
+                    <h2 className='text-white font-bold font-inter text-start text-sm'>Normal</h2>
+                </div>
+                <div className='flex mr-20 justify-end align-bottom mb-14'>
+                    <animated.div style={idSpring}>
+                        <Square>
+                            <div className='flex items-center justify-center'>
+                                <span className="text-white font-bold font-inter text-m">{playerInfo.id}</span>
                             </div>
-                        </div>
-                    </Square>
+                        </Square>
+                    </animated.div>
+
+                    <animated.div className='ml-[-24px]' style={radioSpring}>
+                        <Square>
+                            <div>
+                                <RadioIcon />
+                            </div>
+                        </Square>
+                    </animated.div>
+
+                    <div className='ml-[-24px]'>
+                        <Square>
+                            <div>
+                                <MicroIcon />
+                                <div className='flex flex-col gap-4 ml-8 mt-[-16px]'>
+                                </div>
+                            </div>
+                        </Square>
+                    </div>
                 </div>
             </div>
+
         </>
     );
 }
