@@ -31,8 +31,6 @@ const initialState = {
             hasSeatbelt: true,
             fuel: 15,
             engine: 2,
-            rpm: 0.3,
-            compass: 'N', // N, NE, E, SE, S, SW, W, NW,
         },
     },
 };
@@ -102,8 +100,6 @@ function Memory({ children }) {
                             speedValue: message.data.speedValue,
                             compass: message.data.compass,
                             fuel: message.data.fuel,
-                            rpm: message.data.rpm,
-
                         },
                     })
                     dispatch({
@@ -144,22 +140,6 @@ function Memory({ children }) {
                         },
                     })
                     break;
-                case 'openCustomizationMenu':
-                    dispatch({
-                        type: 'UPDATE_HUD_STATUS',
-                        payload: {
-                            customMenu: true,
-                        },
-                    })
-                    break;
-                case 'closeCustomizationMenu':
-                    dispatch({
-                        type: 'UPDATE_HUD_STATUS',
-                        payload: {
-                            customMenu: false,
-                        },
-                    })
-                    break;
                 case 'updateCarHud':
                     dispatch({
                         type: 'UPDATE_VEHICLE_STATUS',
@@ -174,8 +154,6 @@ function Memory({ children }) {
                             hasSeatbelt: message.hasSeatbelt, // true or false
                             fuel: message.fuel, // 0 - 100
                             engine: message.engineDamageLevel, // 0 = good, 1 = low, 2 = high, 3 = critical
-                            rpm: message.rpm, // 0 - 1
-                            compass: message.direction, // N, NE, E, SE, S, SW, W, NW
                         },
                     })
                     break;
