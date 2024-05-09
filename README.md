@@ -1,4 +1,4 @@
-# FiveM HUD
+# DADI SQUARE HUD
 
 This project is a Heads-Up Display (HUD) for FiveM, a modification platform for Grand Theft Auto V. The HUD is developed using React for the client-side, Vite as the build tool, TailwindCSS for styling, and LUA for the server-side.
 
