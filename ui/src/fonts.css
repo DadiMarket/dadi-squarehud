@@ -1,0 +1,39 @@
+/* Inter */
+
+@font-face {
+    font-family: 'Inter';
+    src: url(./assets/fonts/Inter/Inter-Regular.ttf) format('font/truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(./assets/fonts/Inter/Inter-SemiBold.ttf) format('font/truetype');
+    font-weight: 600;
+    font-style: semibold;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(./assets/fonts/Inter/Inter-Bold.ttf) format('font/truetype');
+    font-weight: 700;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(./assets/fonts/Inter/Inter-Black.ttf) format('font/truetype');
+    font-weight: 900;
+    font-style: 'black';
+}
+
+
+/* Equalize */
+
+@font-face {
+    font-family: 'Equalize';
+    src: url(./assets/fonts/Equalize/Equalize.ttf) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
