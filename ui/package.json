@@ -1,7 +1,7 @@
 {
-  "name": "plz-hud",
+  "name": "dadi-squarehud",
   "private": true,
-  "version": "1.1.2",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DadiMarket/Hud-CBRP.git"
+    "url": "git+https://github.com/DadiMarket/dadi-squarehud.git"
   },
-  "author": "DiegoT4l, Geme",
+  "author": "DADI MARKET",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DadiMarket/Hud-CBRP/issues"
+    "url": "https://github.com/DadiMarket/dadi-squarehud/issues"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
