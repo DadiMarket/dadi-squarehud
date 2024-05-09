@@ -7,7 +7,6 @@ import PlayerStatus from './components/player/PlayerStatus.jsx';
 import PlayerInfo from './components/player/PlayerInfo.jsx';
 import { Context } from './services/Memory.jsx';
 import { debugData } from './services/debugData.jsx';
-import Odometer from './components/dashboard/Compass/Odometer.jsx';
 
 
 debugData([
@@ -16,22 +15,21 @@ debugData([
         data: {
             // Hud Status //
             showHud: true,
-            carHud: false,
-            customMenu: false,
+            carHud: true,
             // Car Status //
             seatBelt: false,
-            speedValue: 0,
+            speedValue: 50,
             compass: 'SW',
-            fuel: 100,
+            fuel: 10,
             rpm: 0.5,
             // Player Status //
-            id: 222,
-            radio: true,
+            id: 22,
+            radio: false,
             talking: false,
-            voicerange: 'Shouting',
+            voicerange: 'Normal',
             health: 50,
-            armor: 10,
-            hunger: 100,
+            armor: 0,
+            hunger: 65,
         }
     },
 ]);
@@ -72,7 +70,6 @@ function App() {
                             <animated.div className='min-w-[33.3%] mr-8' style={statusSpring}>
                                 <PlayerInfo />
                             </animated.div>
-                            <Odometer />
                         </>
                     </Layout>
                 </animated.div>

@@ -1,9 +1,9 @@
 :root {
-    --primary-color: hsla(0, 100%, 40%, 0.64);
-    --secondary-color: hsla(0, 100%, 50%, 0.8);
-    --tertiary-color: hsla(0, 100%, 14%, 0.55);
-    --quaternary-color: hsla(0, 100%, 50%, 0.41);
-    --drop-shadow-color: hsla(0, 100%, 50%, 0.302);
+    --primary-color: hsla(0, 0%, 100%, 0.64);
+    --secondary-color: hsla(0, 2%, 89%, 0.8);
+    --tertiary-color: hsla(0, 0%, 100%, 0.55);
+    --quaternary-color: hsla(0, 0%, 100%, 0.41);
+    --drop-shadow-color: hsla(0, 0%, 94%, 0.302);
 }
 
 
@@ -43,7 +43,7 @@
     border-radius: 1px;
     background-image: linear-gradient(
         180deg, rgba(0, 0, 0, 0.00) 10%, 
-        rgba(21, 21, 21, 0.64) 70.06%, 
+        rgba(66, 66, 66, 0.64) 70.06%, 
         rgba(2, 2, 2, 0.8) 112%), 
         linear-gradient(0deg, rgba(71, 0, 0, 0.55) -28%, 
         rgba(17, 17, 17, 0.41) 112.55%, 
@@ -56,7 +56,7 @@
     position: absolute;
     top: 20%;
     left: 15%;
-    width: 1.8rem;
-    height: 2.0rem;
-    fill: #fff;
+    width: 1.4rem;
+    height: 1.6rem;
+    fill: #000000;
 }

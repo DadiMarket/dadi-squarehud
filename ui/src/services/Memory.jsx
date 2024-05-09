@@ -8,7 +8,6 @@ const initialState = {
         hud: { // Estado del HUD
             showHud: true,
             carHud: false,
-            customMenu: null,
         },
         player: { // Estado del jugador
             health: 50,
@@ -17,7 +16,7 @@ const initialState = {
             hunger: 100,
             thirst: 100,
             talking: false,
-            voicerange: 'normal',
+            voicerange: 'Normal',
             radio: false,
             id: 2,
         },
@@ -30,7 +29,7 @@ const initialState = {
             },
             seatBelt: true,
             hasSeatbelt: true,
-            fuel: 25,
+            fuel: 15,
             engine: 2,
             rpm: 0.3,
             compass: 'N', // N, NE, E, SE, S, SW, W, NW,
@@ -94,7 +93,6 @@ function Memory({ children }) {
                         payload: {
                             showHud: message.data.showHud,
                             carHud: message.data.carHud,
-                            customMenu: message.data.customMenu,
                         },
                     })
                     dispatch({

@@ -13,7 +13,7 @@ function LightsIcon({ currentColor }) {
             <defs>
                 <filter id="filter0_d_34_16" x="0.709717" y="0" width="15.2903" height="15.2903" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                     <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 1 0 0 0 0 0.66 0 0 0 0 0 0 0 0 0.3 0" result="hardAlpha" />
                     <feOffset />
                     <feGaussianBlur stdDeviation="1.5" />
                     <feComposite in2="hardAlpha" operator="out" />

@@ -36,7 +36,7 @@ function FuelStat() {
                     </svg>
                 </div>
                 <div className='w-[50%]'>
-                    <p className="text-white flex overflow-hidden h-[2.5rem] text-[1.4rem] font-inter font-extrabold">{Math.round(fuelCount)}</p>
+                    <p className="text-black flex overflow-hidden h-[2.5rem] text-[1.4rem] font-quicksand font-extrabold">{Math.round(fuelCount)}</p>
                 </div>
             </div>
         </div>

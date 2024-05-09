@@ -16,7 +16,7 @@ function MicroIcon() {
     }, [talking]);
 
     const microSpring = useSpring({
-        fill: isTalking ? '#eeededae' : '#fff',
+        fill: isTalking ? '#0c0c0cae' : '#0c0c0c',
     });
 
     return (

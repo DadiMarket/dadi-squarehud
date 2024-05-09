@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
+import styles from './Dashboard.module.css';
 
 
 function Dashboard({ children }) {
     return (
-        <div className="flex w-[200px] gap-6 h-[80px] bg-zinc-900/50 rounded-md p-2 border-2 border-red-600 skew-12">
-            {children}
+        <div className={styles.container}>
+            <div className={styles.square}>
+                {children}
+            </div>
         </div>
     );
 }

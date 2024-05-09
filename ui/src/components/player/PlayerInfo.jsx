@@ -25,20 +25,37 @@ function PlayerInfo() {
     });
 
     const idSpring = useSpring({
-        transform: radioState ? 'translateX(0px)' : 'translateX(44px)',
+        transform: radioState ? 'translateX(0px)' : 'translateX(36.2px)',
+    });
+
+    const [showElement, setShowElement] = useState(true);
+
+    useEffect(() => {
+        setShowElement(true); // Establecer showElement en true cada vez que playerInfo.voicerange cambie
+
+        const timer = setTimeout(() => {
+            setShowElement(false);
+        }, 2500);
+
+        return () => clearTimeout(timer);
+    }, [playerInfo.voicerange]);
+
+    const voiceRangeSpring = useSpring({
+        opacity: showElement ? 1 : 0,
+        transform: showElement ? 'translateY(0)' : 'translateY(-20px)',
     });
 
     return (
         <>
-            <div className='flex flex-col gap-1'>
-                <div className='w-full flex justify-end items-start px-[8rem] mt-4'>
-                    <h2 className='text-white font-bold font-inter text-start text-sm'>Normal</h2>
-                </div>
+            <div className='flex flex-col gap-2'>
+                <animated.div className='w-full flex justify-end items-start px-[8rem] mt-3' style={voiceRangeSpring}>
+                    <h2 className='text-white font-bold font-quicksand text-start text-sm'>{playerInfo.voicerange}</h2>
+                </animated.div>
                 <div className='flex mr-20 justify-end align-bottom mb-14'>
                     <animated.div style={idSpring}>
                         <Square>
                             <div className='flex items-center justify-center'>
-                                <span className="text-white font-bold font-inter text-m">{playerInfo.id}</span>
+                                <span className="text-black font-bold font-quicksand text-m">{playerInfo.id}</span>
                             </div>
                         </Square>
                     </animated.div>
