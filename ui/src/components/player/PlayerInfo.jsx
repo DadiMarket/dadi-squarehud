@@ -25,7 +25,7 @@ function PlayerInfo() {
     });
 
     const idSpring = useSpring({
-        transform: radioState ? 'translateX(0px)' : 'translateX(36.2px)',
+        transform: radioState ? 'translateX(0px)' : 'translateX(29px)',
     });
 
     const [showElement, setShowElement] = useState(true);
@@ -42,16 +42,16 @@ function PlayerInfo() {
 
     const voiceRangeSpring = useSpring({
         opacity: showElement ? 1 : 0,
-        transform: showElement ? 'translateY(0)' : 'translateY(-20px)',
+        transform: showElement ? 'translateY(0)' : 'translateY(-24px)',
     });
 
     return (
         <>
             <div className='flex flex-col gap-2'>
-                <animated.div className='w-full flex justify-end items-start px-[8rem] mt-3' style={voiceRangeSpring}>
+                <animated.div className='w-full flex justify-end items-start px-[4rem] mt-3' style={voiceRangeSpring}>
                     <h2 className='text-white font-bold font-quicksand text-start text-sm'>{playerInfo.voicerange}</h2>
                 </animated.div>
-                <div className='flex mr-20 justify-end align-bottom mb-14'>
+                <div className='flex justify-end align-bottom mb-14'>
                     <animated.div style={idSpring}>
                         <Square>
                             <div className='flex items-center justify-center'>
@@ -60,7 +60,7 @@ function PlayerInfo() {
                         </Square>
                     </animated.div>
 
-                    <animated.div className='ml-[-24px]' style={radioSpring}>
+                    <animated.div className='ml-[-32px]' style={radioSpring}>
                         <Square>
                             <div>
                                 <RadioIcon />
@@ -68,12 +68,10 @@ function PlayerInfo() {
                         </Square>
                     </animated.div>
 
-                    <div className='ml-[-24px]'>
+                    <div className='ml-[-32px]'>
                         <Square>
                             <div>
                                 <MicroIcon />
-                                <div className='flex flex-col gap-4 ml-8 mt-[-16px]'>
-                                </div>
                             </div>
                         </Square>
                     </div>

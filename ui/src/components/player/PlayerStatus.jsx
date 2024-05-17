@@ -66,7 +66,7 @@ export default function PlayerStatus() {
         <>
             {PLAYER_DATA.map((data, index) => (
                 data.show === false ? null :
-                    <div key={`PLZ:PS_${index}`} className='ml-[-23px] mt-3'>
+                    <div key={`DADI:PS_${index}`} className='ml-[-32px] mt-3'>
                         <SquareStatus progress={data.progress}>
                             {data.icon}
                         </SquareStatus>
@@ -76,28 +76,16 @@ export default function PlayerStatus() {
     );
 
     const inVehicleSpring = useSpring({
-        opacity: isInVehicle ? 1 : 0,
-        transform: isInVehicle ? 'translateY(-180px)' : 'translateY(-20px)',
-    });
-    const outVehicleSpring = useSpring({
-        opacity: !isInVehicle ? 1 : 0,
-        transform: !isInVehicle ? 'translateY(0)' : 'translateY(20px)',
+        opacity: isInVehicle ? 1 : 1,
+        transform: isInVehicle ? 'translateX(300px)' : 'translateX(20px)',
     });
 
     const DisplayPlayerStatus = () => {
-        if (isInVehicle) {
             return (
-                <animated.div className="flex ml-6 justtify-start my-14" style={inVehicleSpring}>
+                <animated.div className="flex flex-col justtify-start my-[50px]" style={inVehicleSpring}>
                     {playerStadistics()}
                 </animated.div>
             );
-        } else {
-            return (
-                <animated.div className="flex ml-6 justify-start my-14" style={outVehicleSpring}>
-                    {playerStadistics()}
-                </animated.div>
-            );
-        }
     }
 
     return (

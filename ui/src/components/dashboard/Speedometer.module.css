@@ -9,6 +9,7 @@
     padding-right: 0.5rem;
 }
 .speedValue {
+    width: 50%;
     font-size: 5.5rem;
     background: linear-gradient(172deg, #f42102 6.36%, #f4900c 100%);
     background-clip: text;
@@ -18,8 +19,9 @@
 .speedUnit {
     @apply uppercase;
     font-size: 3rem;
+    width: 50%;
     background: linear-gradient(189deg, #FFF 30.48%, rgba(255, 255, 255, 0.00) 183.86%);
-    margin-top: -4px;
+    margin-top: 20px;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -17,7 +17,7 @@ function Speedometer() {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex justify-center w-[225px]'>
             <div className={styles.speedValue}>{verifySpeed(speedValue)}</div>
             <div className={styles.speedUnit}>{speedUnit}</div>
         </div>

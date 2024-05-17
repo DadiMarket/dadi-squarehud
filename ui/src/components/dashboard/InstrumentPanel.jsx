@@ -5,12 +5,12 @@ import WarnLights from "./WarnLights";
 function InstrumentPanel() {
 
     return (
-        <div className="flex flex-col gap-8">
-            <div className="flex items-center">
+        <div className="flex flex-col gap-4">
+            <div className="flex w-[225px]">
                     <WarnLights />
             </div>
-            <div className="flex">
-                <div className="flex justify-center items-center w-full">
+            <div className="flex w-[225px]">
+                <div className="flex justify-center  items-center w-full">
                     <Speedometer />
                 </div>
             </div>

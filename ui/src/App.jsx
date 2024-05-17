@@ -19,12 +19,10 @@ debugData([
             // Car Status //
             seatBelt: false,
             speedValue: 50,
-            compass: 'SW',
             fuel: 10,
-            rpm: 0.5,
             // Player Status //
             id: 22,
-            radio: false,
+            radio: true,
             talking: false,
             voicerange: 'Normal',
             health: 50,

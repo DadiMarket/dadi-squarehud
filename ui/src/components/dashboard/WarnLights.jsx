@@ -83,7 +83,7 @@ function WarnLights() {
     });
 
     return (
-        <div className='flex justify-around items-center w-[14.2rem] my-[-60px]'>
+        <div className='flex justify-around  items-end w-[22.5rem] my-[-10px]'>
             <animated.div style={showSeatbelt}>
                 <BeltIcon />
             </animated.div>
