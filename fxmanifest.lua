@@ -2,8 +2,8 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-author 'Dadi Market ft GemeWolf'
-description 'HUD to: PZRP - https://discord.gg/dadimarket'
+author 'Dadi Market'
+description 'Hud and seat belt system for FiveM servers'
 version '0.0.0'
 
 shared_script 'config/config.lua'
