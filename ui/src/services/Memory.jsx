@@ -104,7 +104,6 @@ function Memory({ children }) {
                     dispatch({
                         type: 'UPDATE_PLAYER_STATUS',
                         payload: {
-                            radio: message.data.radio,
                             id: message.data.id,
                             health: message.data.health,
                             hunger: message.data.hunger,
@@ -166,8 +165,7 @@ function Memory({ children }) {
                             hunger: message.hunger, // 0 - 100
                             thirst: message.thirst, // 0 - 100
                             talking: message.talking, // true or false
-                            voicerange: message.voicerange, // Whisper, Normal, Shouting
-                            radio: message.radio, // true or false
+                            voicerange: message.voicerange // Whisper, Normal, Shouting
                         },
                     })
                     break;
