@@ -10,7 +10,7 @@ export async function fetchNui(eventName, data) {
 
         const resourceName = window.GetParentResourceName
             ? window.GetParentResourceName()
-            : "hud-pzrp"
+            : "dadi-squarehud"
 
         const resp = await fetch(`https://${resourceName}/${eventName}`, options)
         const respFormatted = await resp.json()

@@ -18,7 +18,6 @@ local customizationMenuOnScreen = false
 local street = nil
 
 local displayStatus = true
-local usingRadio = false
 
 seatbelt = false
 local lastSpeed = 0.0
@@ -55,17 +54,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-local directions = {
-    N = 360, 0,
-    NE = 315,
-    E = 270,
-    SE = 225,
-    S = 180,
-    SW = 135,
-    W = 90,
-    NW = 45,
-}
-
 
 Citizen.CreateThread(function()
     while true do
@@ -90,7 +78,6 @@ Citizen.CreateThread(function()
             stamina = myStamina,
             hunger = hungerStatus,
             thirst = thirstStatus,
-            radio = usingRadio,
             talking = voice, -- true, false
             voicerange = proximity.mode
         })
@@ -101,42 +88,8 @@ Citizen.CreateThread(function()
             
             local door = false --> 0, 1, 2, 3, 4, 5
             local lightsOff, lightsOn, highbeams = GetVehicleLightsState(myVehicle)
-            local myRpm = GetVehicleCurrentRpm(myVehicle) --> 0.0 - 1.0
             local myFuel = Config.GetFuel(myVehicle) --> 0.0 - 1.0
-            local myCoords = GetEntityCoords(myVehicle) --> x, y, z
             local myVehHealth = Config.GetVehicleDamage(myVehicle) --> 0.0 - 1000.0
-            local nameOfZone = GetNameOfZone(myCoords)
-            local streetName, crossingRoad = GetStreetNameAtCoord(myCoords.x, myCoords.y, myCoords.z) --> hashes
-            local streetNameString = GetStreetNameFromHashKey(streetName) --> string
-            local crossingRoadHash = GetStreetNameFromHashKey(crossingRoad) --> string
-                
-            local playerHeadingDegrees = 0
-            if not Config.DisableCompass then
-                if Config.CompassType == "camera" then
-                    local camRotation = GetGameplayCamRot(0)
-                    playerHeadingDegrees = 360.0 - ((camRotation.z + 360.0) % 360.0)
-                else
-                    playerHeadingDegrees = 360.0 - GetEntityHeading(myVehicle)
-                end
-                local degreeAbsolute = math.abs(playerHeadingDegrees)
-                if (degreeAbsolute >= 0.0 and degreeAbsolute < 22.5) or degreeAbsolute >= 337.5 then
-                    playerHeadingDegrees = "N"
-                elseif degreeAbsolute >= 22.5 and degreeAbsolute < 67.5 then
-                    playerHeadingDegrees = "NW"
-                elseif degreeAbsolute >= 67.5 and degreeAbsolute < 112.5 then
-                    playerHeadingDegrees = "W"
-                elseif degreeAbsolute >= 112.5 and degreeAbsolute < 157.5 then
-                    playerHeadingDegrees = "SW"
-                elseif degreeAbsolute >= 157.5 and degreeAbsolute < 202.5 then
-                    playerHeadingDegrees = "S"
-                elseif degreeAbsolute >= 202.5 and degreeAbsolute < 247.5 then
-                    playerHeadingDegrees = "SE"
-                elseif degreeAbsolute >= 247.5 and degreeAbsolute < 292.5 then
-                    playerHeadingDegrees = "E"
-                elseif degreeAbsolute >= 292.5 and degreeAbsolute < 337.5 then
-                    playerHeadingDegrees = "NE"
-                end
-            end
             if GetVehicleDoorAngleRatio(myVehicle, 0) ~= 0 or GetVehicleDoorAngleRatio(myVehicle, 1) ~= 0 or GetVehicleDoorAngleRatio(myVehicle, 2) ~= 0 or GetVehicleDoorAngleRatio(myVehicle, 3) ~= 0 or GetVehicleDoorAngleRatio(myVehicle, 4) ~= 0 or GetVehicleDoorAngleRatio(myVehicle, 5) ~= 0 then
                 door = true
             end
@@ -151,9 +104,7 @@ Citizen.CreateThread(function()
                 seatbelt = seatbelt, --> true, false
                 hasSeatbelt = Config.SeatBeltVehiclesClasses[GetVehicleClass(myVehicle)], --> true, false
                 engineDamageLevel = (myVehHealth <= 1000.0 and myVehHealth >= 750.0) and 0 or (myVehHealth < 750.0 and myVehHealth >= 500.0) and 1 or (myVehHealth < 500.0 and myVehHealth >= 250.0) and 2 or 3, --> 0, 1, 2, 3
-                rpm = myRpm, --> 0.0 - 1.0
                 fuel = myFuel, --> 0.0 - 1.0
-                direction = playerHeadingDegrees, --> N, NE, E, SE, S, SW, W, NW
             })
         end
         -- if pause and hudOnScreen then
@@ -177,14 +128,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-AddEventHandler("pma-voice:radioActive", function(radioTalking)
-    if isRadioActive ~= radioTalking then
-        isRadioActive = radioTalking
-        usingRadio = radioTalking
-        SendNUIMessage({ action = 'updateHud', radio = usingRadio })
-    end
-end)
-
 loadPlayerMinimap = function()
     SendNUIMessage({action = 'getMinimap'})
 end
@@ -198,7 +141,7 @@ Display = function(toggle)
     SendNUIMessage({action = 'displayHud', display = toggle})
 end
 
-RegisterNetEvent('hud-pzrp:display', function(toggle)
+RegisterNetEvent('dadi-squarehud:display', function(toggle)
     SendNUIMessage({action = 'displayHud', display = toggle})
     if isInVehicle then
         DisplayRadar(toggle)

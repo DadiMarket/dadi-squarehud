@@ -15,14 +15,13 @@ debugData([
         data: {
             // Hud Status //
             showHud: true,
-            carHud: true,
+            carHud: false,
             // Car Status //
             seatBelt: false,
             speedValue: 50,
             fuel: 10,
             // Player Status //
             id: 22,
-            radio: true,
             talking: false,
             voicerange: 'Normal',
             health: 50,

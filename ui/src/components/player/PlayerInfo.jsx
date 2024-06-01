@@ -3,30 +3,15 @@ import { useSpring, animated } from '@react-spring/web';
 import { Context } from '../../services/Memory';
 import Square from "../shared/Square";
 import MicroIcon from "../icons/Microphone";
-import RadioIcon from "../icons/Radio";
 
 function PlayerInfo() {
     const { state } = useContext(Context);
     const playerProps = state.objects.player;
     const [playerInfo, setPlayerInfo] = useState({});
-    const [radioState, setRadioState] = useState(false);
 
     useEffect(() => {
         setPlayerInfo(playerProps);
     }, [playerProps]);
-
-    useEffect(() => {
-        setRadioState(playerInfo.radio || false);
-    }, [playerInfo.radio]);
-
-    const radioSpring = useSpring({
-        opacity: radioState ? 1 : 0,
-        transform: radioState ? 'translateY(0)' : 'translateY(-20px)',
-    });
-
-    const idSpring = useSpring({
-        transform: radioState ? 'translateX(0px)' : 'translateX(29px)',
-    });
 
     const [showElement, setShowElement] = useState(true);
 
@@ -51,22 +36,15 @@ function PlayerInfo() {
                 <animated.div className='w-full flex justify-end items-start px-[4rem] mt-3' style={voiceRangeSpring}>
                     <h2 className='text-white font-bold font-quicksand text-start text-sm'>{playerInfo.voicerange}</h2>
                 </animated.div>
+
                 <div className='flex justify-end align-bottom mb-14'>
-                    <animated.div style={idSpring}>
+                    <div>
                         <Square>
                             <div className='flex items-center justify-center'>
                                 <span className="text-black font-bold font-quicksand text-m">{playerInfo.id}</span>
                             </div>
                         </Square>
-                    </animated.div>
-
-                    <animated.div className='ml-[-32px]' style={radioSpring}>
-                        <Square>
-                            <div>
-                                <RadioIcon />
-                            </div>
-                        </Square>
-                    </animated.div>
+                    </div>
 
                     <div className='ml-[-32px]'>
                         <Square>

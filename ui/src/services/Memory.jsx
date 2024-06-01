@@ -17,7 +17,6 @@ const initialState = {
             thirst: 100,
             talking: false,
             voicerange: 'Normal',
-            radio: false,
             id: 2,
         },
         vehicle: { // Estado del vehículo
@@ -194,12 +193,8 @@ function Memory({ children }) {
         };
 
         window.addEventListener('message', handleMessage);
-        window.addEventListener('hud-pzrp:display', handleMessage);
 
-        return () => {
-            window.removeEventListener('message', handleMessage);
-            window.removeEventListener('hud-pzrp:display', handleMessage);
-        }
+        return () => window.removeEventListener('message', handleMessage);
     }, [state]);
 
     return (
