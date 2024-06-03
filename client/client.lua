@@ -237,21 +237,6 @@ RegisterNUICallback("loaded", function(data)
     end
 end)
 
-RegisterNUICallback("minimapDisplay", function(data)
-    minimapDisplay = data.type
-    if data.type == "on" then
-        DisplayRadar(true)
-    elseif data.type == "off" then
-        DisplayRadar(false)
-    elseif data.type == "vehicle" then
-        if isInVehicle then
-            DisplayRadar(true)
-        else
-            DisplayRadar(false)
-        end
-    end
-end)
-
 exports('hasSeatbelt', function()
     return seatbelt
 end)
