@@ -14,8 +14,6 @@ export default {
         principal: "64px"
       },
       fontFamily: {
-        'inter': ["Inter", "sans-serif"],
-        'equalize': ["Equalize", "sans-serif"],
         'quicksand': ["Quicksand", "sans-serif"],
         'russo-one': ["Russo One", "sans-serif"],
       },

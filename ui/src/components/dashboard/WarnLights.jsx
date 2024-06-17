@@ -26,8 +26,8 @@ function WarnLights() {
     const vehicleprops = state.objects.vehicle;
 
     const { lights, seatBelt, hasSeatbelt, fuel, engine, speedValue } = vehicleprops;
-    const seatbeltAlarmMinimumSpeed = 40; // Definir el límite de velocidad para activar la alarma
-    const seatbeltAlarmVolume = 0.5; // Definir el volumen de la alarma del cinturón de seguridad
+    const seatbeltAlarmMinimumSpeed = 40;
+    const seatbeltAlarmVolume = 0.5;
 
     const [seatbeltAlarmPlaying, setSeatbeltAlarmPlaying] = useState(false);
 

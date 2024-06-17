@@ -7,7 +7,7 @@ function Layout({ children }) {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <img src={DadiLogo} alt="PlazaRP_Logo" />
+                <img src={DadiLogo} alt="DadiMarket_Logo" />
             </div>
             <div className={styles.content}>
                 {children}

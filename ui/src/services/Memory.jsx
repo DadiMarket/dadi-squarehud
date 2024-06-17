@@ -5,11 +5,11 @@ import { fetchNui } from "./fetchNui";
 
 const initialState = {
     objects: {
-        hud: { // Estado del HUD
+        hud: { // HUD status
             showHud: false,
             carHud: false,
         },
-        player: { // Estado del jugador
+        player: { // Player status
             health: 0,
             armor: 0,
             stamina: 0,
@@ -19,7 +19,7 @@ const initialState = {
             voicerange: 'Normal',
             id: 0,
         },
-        vehicle: { // Estado del vehículo
+        vehicle: { // Vehicle status
             speedUnit: 'mph',
             speedValue: 0,
             lights: {
@@ -36,7 +36,7 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'UPDATE_HUD_STATUS': // Se actualiza el estado del HUD con la información recibida desde el servidor
+        case 'UPDATE_HUD_STATUS':
             return {
                 ...state,
                 objects: {
@@ -47,7 +47,7 @@ const reducer = (state, action) => {
                     },
                 },
             };
-        case 'UPDATE_PLAYER_STATUS': // Se actualiza el estado del jugador con la información recibida desde el servidor
+        case 'UPDATE_PLAYER_STATUS':
             return {
                 ...state,
                 objects: {
@@ -58,7 +58,7 @@ const reducer = (state, action) => {
                     },
                 },
             };
-        case 'UPDATE_VEHICLE_STATUS': // Se actualiza el estado del vehículo con la información recibida desde el servidor
+        case 'UPDATE_VEHICLE_STATUS':
             return {
                 ...state,
                 objects: {
@@ -84,35 +84,6 @@ function Memory({ children }) {
             const message = e.data;
 
             switch (message.action) {
-                case 'webDisplay':
-                    dispatch({
-                        type: 'UPDATE_HUD_STATUS',
-                        payload: {
-                            showHud: message.data.showHud,
-                            carHud: message.data.carHud,
-                        },
-                    })
-                    dispatch({
-                        type: 'UPDATE_VEHICLE_STATUS',
-                        payload: {
-                            seatBelt: message.data.seatBelt,
-                            speedValue: message.data.speedValue,
-                            compass: message.data.compass,
-                            fuel: message.data.fuel,
-                        },
-                    })
-                    dispatch({
-                        type: 'UPDATE_PLAYER_STATUS',
-                        payload: {
-                            id: message.data.id,
-                            health: message.data.health,
-                            hunger: message.data.hunger,
-                            armor: message.data.armor,
-                            talking: message.data.talking,
-                            voicerange: message.data.voicerange,
-                        },
-                    })
-                    break;
                 case 'displayHud':
                     fetchNui('loaded');
                     dispatch({
@@ -184,14 +155,12 @@ function Memory({ children }) {
                         },
                     })
                     break;
-
                 default:
                     break;
             }
         };
 
         window.addEventListener('message', handleMessage);
-
         return () => window.removeEventListener('message', handleMessage);
     }, [state]);
 

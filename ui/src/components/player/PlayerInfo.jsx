@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, memo } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { Context } from '../../services/Memory';
 import Square from "../shared/Square";
@@ -16,7 +16,7 @@ function PlayerInfo() {
     const [showElement, setShowElement] = useState(true);
 
     useEffect(() => {
-        setShowElement(true); // Establecer showElement en true cada vez que playerInfo.voicerange cambie
+        setShowElement(true);
 
         const timer = setTimeout(() => {
             setShowElement(false);

@@ -6,30 +6,7 @@ import InstrumentPanel from './components/dashboard/InstrumentPanel.jsx';
 import PlayerStatus from './components/player/PlayerStatus.jsx';
 import PlayerInfo from './components/player/PlayerInfo.jsx';
 import { Context } from './services/Memory.jsx';
-import { debugData } from './services/debugData.jsx';
 
-
-debugData([
-    {
-        action: 'webDisplay',
-        data: {
-            // Hud Status //
-            showHud: true,
-            carHud: false,
-            // Car Status //
-            seatBelt: false,
-            speedValue: 50,
-            fuel: 10,
-            // Player Status //
-            id: 22,
-            talking: false,
-            voicerange: 'Normal',
-            health: 50,
-            armor: 0,
-            hunger: 65,
-        }
-    },
-]);
 
 function App() {
     const { state } = useContext(Context);
