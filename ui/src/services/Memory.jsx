@@ -6,30 +6,30 @@ import { fetchNui } from "./fetchNui";
 const initialState = {
     objects: {
         hud: { // Estado del HUD
-            showHud: true,
+            showHud: false,
             carHud: false,
         },
         player: { // Estado del jugador
-            health: 50,
-            armor: 50,
-            stamina: 100,
-            hunger: 100,
-            thirst: 100,
+            health: 0,
+            armor: 0,
+            stamina: 0,
+            hunger: 0,
+            thirst: 0,
             talking: false,
             voicerange: 'Normal',
-            id: 2,
+            id: 0,
         },
         vehicle: { // Estado del vehículo
             speedUnit: 'mph',
-            speedValue: 50,
+            speedValue: 0,
             lights: {
                 lightsOn: 1,
                 highBeams: 0,
             },
             seatBelt: true,
             hasSeatbelt: true,
-            fuel: 15,
-            engine: 2,
+            fuel: 0,
+            engine: 0,
         },
     },
 };

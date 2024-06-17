@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Dadi Market'
 description 'Hud and seat belt system for FiveM servers'
-version '0.0.0'
+version '1.0.0'
 
 shared_script 'config/config.lua'
 
