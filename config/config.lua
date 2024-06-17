@@ -1,5 +1,5 @@
 Config = {}
-Config.Core = 'ESX' -- NO TOCAR!
+Config.Core = 'new' -- Old or new esx!
 Config.CoreExport = function()
     return exports['es_extended']:getSharedObject()
 end
@@ -18,34 +18,29 @@ Config.Translate = {
     ['notify.seat_belts_unbuckled'] = 'Seat belts were unbuckled.',
 }
 
--- Mientras mas bajes el numero, mas rapido se actualizara el hud, pero consumira mas recursos.
+-- The more you lower the number, the faster the hud will update, but the more resources it will consume.
 Config.LoopTimeoutHud = 110
 Config.LoopTimeoutStatus = 1000
 
-Config.EnableCustomizationMenu = true -- Activar menu de personalizacion / Desactivar menu de personalizacion
-Config.CustomizationMenuCommand = 'hud'
-Config.CustomizationMenuKey = 'I' -- Si cambia esta clave, es necesario borrar la caché del juego o cambiar en la configuración del juego, para los nuevos jugadores habrá esta clave
-Config.CustomizationMenuDescription = 'Hud Customization'
-
-Config.EnableToggleHud = false -- Activar / Desactivar hud con una tecla
+Config.EnableToggleHud = false -- Activate / Deactivate hud with one button
 Config.ToggleHudCommand = '+toggle_hud'
-Config.ToggleHudKey = 'K' -- Si cambia esta clave, es necesario borrar la caché del juego o cambiar en la configuración del juego, para los nuevos jugadores habrá esta clave
+Config.ToggleHudKey = 'K' -- If you change this key, it is necessary to clear the game cache or change in the game settings, for new players there will be this key
 Config.ToggleHudDescription = 'Toggle hud display'
 
-Config.EnableSeatBelt = true -- Activar / Desactivar cinturón de seguridad
+Config.EnableSeatBelt = true -- Activate / Deactivate seat belt
 Config.SeatBeltCommand = 'seatbelt'
 Config.SeatBeltKey = 'B'
 Config.SeatBeltDescription = 'Seat belt'
 
-Config.SeatBeltMinimumSpeedToRagdoll = 100 -- La velocidad mínima a la que un jugador sin cinturón de seguridad puede caerse de un vehículo
+Config.SeatBeltMinimumSpeedToRagdoll = 100 -- The minimum speed at which an unrestrained player can fall out of a vehicle
 Config.SeatBeltChanceForInstantDeath = 50 -- 50 = 50%
 
-Config.SeatBeltAlarm = true -- Activar / Desactivar alarma de cinturón de seguridad
+Config.SeatBeltAlarm = true -- Activate / Deactivate seat belt alarm
 Config.SeatBeltAlarmMinimumSpeed = 40.0
 
--- @SeatBeltVehiclesClasses: false = los cinturones de seguridad no pueden abrocharse en el vehículo
--- @SeatBeltVehiclesClasses: true = los cinturones de seguridad pueden abrocharse en el vehículo
-Config.SeatBeltVehiclesClasses = { -- Clases de vehículos en los que pueden abrocharse los cinturones de seguridad
+-- @SeatBeltVehiclesClasses: false = seat belts cannot be fastened in the vehicle
+-- @SeatBeltVehiclesClasses: true = seat belts can be fastened in the vehicle
+Config.SeatBeltVehiclesClasses = { -- Classes of vehicles in which seat belts may be fastened
     [0] = true, -- Compacts
     [1] = true, -- Sedans
     [2] = true, -- SUVs
@@ -71,9 +66,9 @@ Config.SeatBeltVehiclesClasses = { -- Clases de vehículos en los que pueden abr
     [22] = true, -- Open Wheel
 }
 
--- @SeatBeltAntiRagdollVehicles: false = el jugador puede caerse
--- @SeatBeltAntiRagdollVehicles: true = el jugador no puede caerse
-Config.SeatBeltAntiRagdollVehicles = { -- Clases de vehículos que no se tienen en cuenta en caso de golpe fuerte (el jugador no caerá de ellos).
+-- @SeatBeltAntiRagdollVehicles: false = the player can fall
+-- @SeatBeltAntiRagdollVehicles: true = the player cannot fall
+Config.SeatBeltAntiRagdollVehicles = { -- Vehicle classes that are not taken into account in case of a hard hit (the player will not fall from them).
     [0] = false, -- Compacts
     [1] = false, -- Sedans
     [2] = false, -- SUVs
@@ -99,12 +94,7 @@ Config.SeatBeltAntiRagdollVehicles = { -- Clases de vehículos que no se tienen 
     [22] = false, -- Open Wheel
 }
 
-Config.DisableCompass = false -- Desactivar brújula
-Config.CompassType = "camera" -- NO TOCAR!
-
-Config.UnitOfSpeed = 'kmh' -- 'kmh' or 'mph'
-
-Config.DisableGTAHudInVehicle = true -- elimina los nativos gta 5 visualización de nombres de calles, etc.
+Config.UnitOfSpeed = 'mph' -- 'kmh' or 'mph'
 
 Config.MinimapZoom = 1100
 Config.MinimapOnlyInVehicle = true
@@ -120,18 +110,12 @@ Config.GetStatus = function()
     return data
 end
 
-Config.Radio = function()
-    local currentFreq = exports["origen_radio"]:GetMultiFrec();
-    return currentFreq
-end
-
 Config.GetFuel = function(vehicle)
-    -- return GetVehicleFuelLevel(vehicle)
-    return exports['LegacyFuel']:GetFuel(vehicle)
+    return GetVehicleFuelLevel(vehicle)
 end
 
 Config.GetVehicleDamage = function(vehicle)
     return GetVehicleEngineHealth(vehicle)
 end
 
-Config.Debug = false -- Solo desarrolladores como el Geme B)
+Config.Debug = false -- Only developers

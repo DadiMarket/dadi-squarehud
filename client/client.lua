@@ -1,4 +1,4 @@
-if Config.Core == "ESX" then
+if Config.Core == "new" then
     ESX = Config.CoreExport()
 else
     Citizen.CreateThread(function()
@@ -12,11 +12,7 @@ end
 hungerStatus = 0
 thirstStatus = 0
 stressStatus = 0
-local hudOnScreen = true
 local speedometerOnScreen = false
-local customizationMenuOnScreen = false
-local street = nil
-
 local displayStatus = true
 
 seatbelt = false
@@ -26,9 +22,6 @@ local currentSpeed = 0.0
 local isInVehicle = false
 local myVehicle = nil
 local mySpeed = nil
-
-local minimap = nil
-local cinematicMode = false
 
 local minimapDisplay = Config.MinimapOnlyInVehicle and "vehicle" or "on"
 
@@ -46,7 +39,7 @@ end)
 
 local lastHealth = 0
 Citizen.CreateThread(function()
-    while Config.Core == "ESX" do
+    while Config.Core == "new" do
         local status = Config.GetStatus()
         hungerStatus = status.hunger
         thirstStatus = status.thirst
@@ -107,11 +100,6 @@ Citizen.CreateThread(function()
                 fuel = myFuel, --> 0.0 - 1.0
             })
         end
-        -- if pause and hudOnScreen then
-        --     Display(false)
-        -- elseif not hudOnScreen and not pause then
-        --     Display(true)
-        -- end
         if isInVehicle and not speedometerOnScreen then
             SendNUIMessage({action = "showCarHud"})
             if Config.MinimapOnlyInVehicle then
@@ -155,34 +143,6 @@ exports('Display', function(toggle)
     end
 end)
 
-if Config.EnableCustomizationMenu then
-    if Config.CustomizationMenuCommand then
-        RegisterCommand(Config.CustomizationMenuCommand, function()
-            CustomizationMenu()
-        end, false)
-
-        if Config.CustomizationMenuKey then
-            RegisterKeyMapping(Config.CustomizationMenuCommand, Config.CustomizationMenuDescription, "keyboard", Config.CustomizationMenuKey)
-        end
-    end
-end
-
-CustomizationMenu = function()
-    if customizationMenuOnScreen then
-        SendNUIMessage({action = 'closeCustomizationMenu'})
-        SetNuiFocus(false, false)
-        customizationMenuOnScreen = false
-    else
-        SendNUIMessage({action = 'openCustomizationMenu'})
-        SetNuiFocus(true, true)
-        customizationMenuOnScreen = true
-    end
-end
-
-RegisterNUICallback("closeCustomizationMenu", function(data)
-    CustomizationMenu()
-end)
-
 if Config.EnableSeatBelt then
     if Config.SeatBeltCommand then
         RegisterCommand(Config.SeatBeltCommand, function()
@@ -206,9 +166,6 @@ if Config.EnableSeatBelt then
         Config.Notification(Config.Translate['notify.title.seat_belts'], seatbelt and Config.Translate['notify.seat_belts_buckled'] or Config.Translate['notify.seat_belts_unbuckled'], seatbelt and 'success' or 'error')
         Citizen.CreateThread(function()
             while seatbelt do
-                if Config.DisableGTAHudInVehicle then
-                    RemoveGTAHud()
-                end
                 DisableControlAction(0, 75, true)
                 Citizen.Wait(1)
             end
@@ -222,9 +179,6 @@ if Config.EnableSeatBelt then
                 sleep = 50
                 lastSpeed = currentSpeed
                 currentSpeed = mySpeed
-                if Config.DisableGTAHudInVehicle then
-                    RemoveGTAHud()
-                end
                 local myVehVector = GetEntitySpeedVector(myVehicle, true).y > 15.0
                 local myVehVelocity = GetEntityVelocity(myVehicle)
                 local vhfr = (lastSpeed - mySpeed) / GetFrameTime() > 3000
@@ -269,124 +223,17 @@ if Config.EnableToggleHud then
     end
 end
 
-RemoveGTAHud = function()
-    HideHudComponentThisFrame(6)
-    HideHudComponentThisFrame(7)
-    HideHudComponentThisFrame(8)
-    HideHudComponentThisFrame(9)
-end
-
-ChangeMinimap = function(type)
-    if not Config.UseCustomMinimap then
-        return
-    end
-    local ratio = GetScreenAspectRatio()
-    local posX = 0.015
-    local posY = 0.022
-    if tonumber(string.format("%.2f", ratio)) >= 2.3 then
-        posX = -0.140
-        posY = 0.022
-    end
-    if type == "circle" then
-        RequestStreamedTextureDict("squaremap", false)
-		if not HasStreamedTextureDictLoaded("squaremap") then
-			Wait(200)
-		end
-		if not Config.MapBigBypass then
-		    Wait(450)
-        end
-        SetMinimapClipType(0)
-		AddReplaceTexture("platform:/textures/graphics", "radarmasksm", "squaremap", "radarmasksm")
-		AddReplaceTexture("platform:/textures/graphics", "radarmask1g", "squaremap", "radarmasksm")
-		SetMinimapComponentPosition('minimap', 'L', 'B', posX - 0.025, -0.017, 0.145, 0.2)
-        SetMinimapComponentPosition('minimap_mask', 'L', 'B', posX - 0.9155, posY + 0.03, 0.285, 0.455)
-        SetMinimapComponentPosition('minimap_blur', 'L', 'B', posX - 0.0255, posY + 0.02, 0.23, 0.28)
-		SetBlipAlpha(GetNorthRadarBlip(), 0)
-		SetMinimapClipType(0)
-		if not Config.MapBigBypass then
-		    SetRadarBigmapEnabled(true, false)
-            Citizen.Wait(350)
-            while IsBigmapActive() do
-                SetRadarBigmapEnabled(false, false)
-                Citizen.Wait(20)
-            end
-            SetRadarBigmapEnabled(false, false)
-        end
-    else
-        RequestStreamedTextureDict("squaremap", false)
-		if not HasStreamedTextureDictLoaded("squaremap") then
-			Wait(200)
-		end
-		if not Config.MapBigBypass then
-		    Wait(450)
-        end
-        SetMinimapClipType(0)
-		AddReplaceTexture("platform:/textures/graphics", "radarmasksm", "squaremap", "radarmasksm")
-		AddReplaceTexture("platform:/textures/graphics", "radarmask1g", "squaremap", "radarmasksm")
-		SetMinimapComponentPosition('minimap', 'L', 'B', posX - 0.025, -0.017, 0.145, 0.2)
-        SetMinimapComponentPosition('minimap_mask', 'L', 'B', posX - 0.9155, posY + 0.03, 0.285, 0.455)
-        SetMinimapComponentPosition('minimap_blur', 'L', 'B', posX - 0.0255, posY + 0.02, 0.23, 0.28)
-		SetBlipAlpha(GetNorthRadarBlip(), 0)
-		SetMinimapClipType(0)
-		if not Config.MapBigBypass then
-		    SetRadarBigmapEnabled(true, false)
-            Citizen.Wait(350)
-            while IsBigmapActive() do
-                SetRadarBigmapEnabled(false, false)
-                Citizen.Wait(20)
-            end
-            SetRadarBigmapEnabled(false, false)
-        end
-    end
-    if isInVehicle then
-        DisplayRadar(true) 
-    elseif not isInVehicle then
-        if Config.MinimapOnlyInVehicle then
-            DisplayRadar(false)
-            if Config.Debug == 'true' then
-                print('^4Debug:^7', 'Minimapa sera mostrado para solo vehiculo.')
-            end
-        end
-    end
-end
-
 RegisterNUICallback("loaded", function(data)
     SendNUIMessage({
         action = "load",
         id = GetPlayerServerId(PlayerId()),
         seatbeltAlarm = Config.SeatBeltAlarm,
         seatbeltAlarmMinimumSpeed = Config.SeatBeltAlarmMinimumSpeed,
-        -- disableCompass = Config.DisableCompass
     })
     if Config.MinimapOnlyInVehicle then
         DisplayRadar(false)
     else
         DisplayRadar(true)
-    end
-end)
-
-RegisterNUICallback("minimapDisplay", function(data)
-    minimapDisplay = data.type
-    if data.type == "on" then
-        DisplayRadar(true)
-    elseif data.type == "off" then
-        DisplayRadar(false)
-    elseif data.type == "vehicle" then
-        if isInVehicle then
-            DisplayRadar(true)
-        else
-            DisplayRadar(false)
-        end
-    end
-end)
-
-RegisterNUICallback("changeMinimap", function(data)
-    if data.minimap == 'circle' then
-        ChangeMinimap('square')
-    elseif data.minimap == 'square' then
-        ChangeMinimap()
-    else
-        ChangeMinimap('square')
     end
 end)
 
