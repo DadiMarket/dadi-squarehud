@@ -1,0 +1,41 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1 rem = 10px */    
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+svg {
+  filter: drop-shadow(0px 1px 6px rgba(255, 255, 255, 0.5));
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.font-russo {
+  font-family: 'Russo One', sans-serif;
+}
+.font-quicksand {
+  font-family: 'Quicksand', sans-serif;
+}

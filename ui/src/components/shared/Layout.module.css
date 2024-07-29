@@ -1,0 +1,32 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid:
+        "header" auto
+        "main" 80%;
+    gap: 8px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-right: 2.5rem;
+    grid-area: header;
+}
+.header img {
+    opacity: 0.7;
+    width: 15rem;
+    height: 15rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    grid-area: main;
+}
